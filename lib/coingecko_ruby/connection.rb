@@ -5,14 +5,14 @@ require 'coingecko_ruby/error'
 module CoingeckoRuby
   module Connection
     BASE_URL = 'https://pro-api.coingecko.com/api/v3/'.freeze
-    curl /ping
+
     def get(endpoint, **opts)
       request :get, endpoint, **opts
     end
 
     def request(method, endpoint, **opts)
       connection = create_connection
-      response = connection.send(method, "#{endpoint}?x_cg_pro_api_key=#{ENV[COINGECKO_KEY]}", opts)
+      response = connection.send(method, "#{endpoint}?x_cg_pro_api_key=CG-tUs1Xxbj8sCvWYLCqrWkiXLh", opts)
       response.body
     rescue Faraday::Error => e
       wrapped_error_class = CoingeckoRuby::FaradayError.wrap_error(e)
